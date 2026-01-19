@@ -1,20 +1,34 @@
+<!-- public/index.html -->
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Phase 1 EV UI</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
 
-  <body>
-    <div class="wrap">
-      <h1>Phase 1 (Imperative) — EV Dataset</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phase 1 (Imperative) — EV Dataset</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
 
+<body>
+  <header class="appbar">
+    <div class="appbar-left">
+      <div class="brand">EV Analysis</div>
+      <div class="subtitle">Phase 1 (Imperative)</div>
+    </div>
+
+    <div class="appbar-right">
+      <button id="themeToggle" class="themeBtn" aria-label="Toggle theme">
+        🌙 Dark
+      </button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>Phase 1 (Imperative) — EV Dataset</h1>
+
+    <div class="layout">
       <div class="card">
-        <button id="btnLoad">Load Data (/data)</button>
-        <p id="status" class="status">No data loaded.</p>
-        <p>Total Records: <b><span id="count">0</span></b></p>
+        <p class="meta">Total Records: <b><span id="count">0</span></b></p>
 
         <div class="row">
           <div class="field">
@@ -28,7 +42,9 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="btnGrid">
+          <button id="btnFull" disabled>Load Full Dataset</button>
+          <button id="btnQ1" disabled>Q1 Manufacturer Breakdown</button>
           <button id="btnQ2" disabled>Q2 Models</button>
           <button id="btnQ3" disabled>Q3 Longest Range</button>
           <button id="btnQ4" disabled>Q4 Avg Charging Time</button>
@@ -37,29 +53,27 @@
         </div>
 
         <h2>Output</h2>
-        <div id="output" class="output">Load data to begin.</div>
+        <div id="output" class="output">Waiting for data...</div>
       </div>
 
       <div class="card">
-        <h2>Q1: Total Vehicles by Manufacturer</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Manufacturer</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="q1Table">
-            <tr>
-              <td colspan="2">Load data to generate table.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="cardHeader">
+          <h2 class="noMargin">Dataset Table</h2>
+          <span class="hint">Scroll horizontally to view all columns</span>
+        </div>
+
+        <div class="tableWrap">
+          <table>
+            <thead id="dataHead"></thead>
+            <tbody id="dataBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- IMPORTANT: functions file first, then app.js -->
-    <script src="./evFunctions.js"></script>
-    <script src="./app.js"></script>
-  </body>
+  <script src="./evFunctions.js"></script>
+  <script src="./app.js"></script>
+</body>
+
 </html>
