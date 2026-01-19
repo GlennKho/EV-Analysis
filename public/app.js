@@ -280,7 +280,7 @@ function runQ2() {
 
   const models = q2_getModelsByManufacturer(VEHICLES, m);
 
-  const html = `<b>Q2. All models from manufacturer ${m}:</b>`;
+  let html = `<b>Q2. All models from manufacturer ${m}:</b>`;
   if (models.length === 0) html += "<p>No models found.</p>";
   else {
     html += "<ul>";
